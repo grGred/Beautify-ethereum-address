@@ -57,13 +57,12 @@ def wrtie_to_file(list0, list1, contract_address0, contract_address1, EOA_public
         f.write("Private key: " + str(private_key) + '\n\n')
         f.close()
 
+
 def calculate_new_contract_address(sender, nonce):
     new_address = pyethereum.mk_contract_address(sender, nonce)
     return new_address.hex()
 
 
-# if __name__ == '__main__':
-#     main()
-
-for i in range(8):
-    threading.Thread(target=main()).start()
+if __name__ == '__main__':
+    for i in range(8):
+        threading.Thread(target=main()).start()
