@@ -5,18 +5,23 @@ import pyethereum
 
 
 def find_beautiful_address(string):
-    beautiful_list = []
-    for j in range(10):
-        number_counter = 1
-        i = 0
-        while i < len(string):
-            if string[i] == str(j) and string[i + 1] == str(j):
-                number_counter += 1
-                i += 1
+    beauty = 0
+    if string[0:3] == '777':
+        for i in range(3):
+            if string[len(string) - 1 - i] == '7':
+                print(string)
+                beauty += 1
             else:
-                beautiful_list.append(number_counter)
                 break
-    return beautiful_list
+    elif string[len(string) - 4:len(string)] == '7777':
+        beauty += 1
+        for i in range(3):
+            if string[i] == '7':
+                print(string)
+                beauty += 1
+            else:
+                break
+    return beauty
 
 
 def find_EOA_address():
@@ -33,25 +38,25 @@ def main():
         contract_address0 = calculate_new_contract_address(EOA_public_address, 0)
         contract_address1 = calculate_new_contract_address(EOA_public_address, 1)
 
-        list0 = find_beautiful_address(contract_address0)
-        list1 = find_beautiful_address(contract_address1)
+        beauty0 = find_beautiful_address(contract_address0)
+        beauty1 = find_beautiful_address(contract_address1)
 
-        wrtie_to_file(list0, list1, contract_address0, contract_address1, EOA_public_address, private_key)
+        wrtie_to_file(beauty0, beauty1, contract_address0, contract_address1, EOA_public_address, private_key)
 
 
-def wrtie_to_file(list0, list1, contract_address0, contract_address1, EOA_public_address, private_key):
-    if max(list0) > 4:
-        f = open("addresses1.txt", "a")
+def wrtie_to_file(beauty0, beauty1, contract_address0, contract_address1, EOA_public_address, private_key):
+    if beauty0 >= 1:
+        f = open("addresses3.txt", "a")
         f.write("Contract address: 0x" + str(contract_address0) + '\n')
-        f.write("Beauty: " + str(max(list0)) + '\n')
+        f.write("Beauty: " + str(beauty0) + '\n')
         f.write("Nonce: 0" + '\n')
         f.write("Address EOA: " + str(EOA_public_address) + '\n')
         f.write("Private key: " + str(private_key) + '\n\n')
         f.close()
-    if max(list1) > 4:
-        f = open("addresses1.txt", "a")
+    if beauty1 >= 1:
+        f = open("addresses3.txt", "a")
         f.write("Contract address: 0x" + str(contract_address1) + '\n')
-        f.write("Beauty: " + str(max(list1)) + '\n')
+        f.write("Beauty: " + str(beauty1) + '\n')
         f.write("Nonce: 1" + '\n')
         f.write("Address EOA: " + str(EOA_public_address) + '\n')
         f.write("Private key: " + str(private_key) + '\n\n')
