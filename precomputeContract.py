@@ -6,17 +6,17 @@ import pyethereum
 
 def find_beautiful_address(string):
     beauty = 0
-    if string[0:3] == '777':
-        for i in range(3):
-            if string[len(string) - 1 - i] == '7':
+    if string[0:3] == '333':
+        for i in range(10):
+            if string[len(string) - 1 - i] == '3':
                 print(string)
                 beauty += 1
             else:
                 break
-    elif string[len(string) - 4:len(string)] == '7777':
+    elif string[len(string) - 4:len(string)] == '3333':
         beauty += 1
-        for i in range(3):
-            if string[i] == '7':
+        for i in range(10):
+            if string[i] == '3':
                 print(string)
                 beauty += 1
             else:
