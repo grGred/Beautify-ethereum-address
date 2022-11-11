@@ -32,7 +32,6 @@ def find_EOA_address():
 
 
 def main():
-    a = 0
     while True:
         EOA_public_address, private_key = find_EOA_address()
 
@@ -41,8 +40,7 @@ def main():
 
         beauty0 = find_beautiful_address(contract_address0)
         beauty1 = find_beautiful_address(contract_address1)
-        print(a + 2)
-        a += 2
+
         wrtie_to_file(beauty0, beauty1, contract_address0, contract_address1, EOA_public_address, private_key)
 
 
